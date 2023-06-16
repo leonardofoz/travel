@@ -7,9 +7,11 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * Configuration class that registers the RequestTrackingInterceptor to be applied
- * to incoming requests. It also configures the necessary message converters and
- * resource handlers for the Spring MVC framework.
+ * Configuration class that registers the RequestTrackingInterceptor
+ * to be applied to incoming requests.
+ *
+ * @author leonardofoz
+ * @since 0.1.0
  */
 @Configuration
 @AllArgsConstructor

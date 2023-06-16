@@ -29,8 +29,19 @@ travel:
 
 actuator:
   metrics:
+    controller:
+      path: /actuator/metrics
     username: ops
     password: psw
+
+management:
+  metrics:
+    enable:
+      http.server.requests: true
+    export:
+      prometheus:
+        enabled: true
+  metrics.web.server.request.autotime.enabled: true
 
 server:
   port: 8080

@@ -9,6 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 /**
  * Configuration class for securing endpoints with basic authentication.
+ *
+ * @author leonardofoz
+ * @since 0.1.0
  */
 @Configuration
 @EnableWebSecurity
@@ -38,11 +41,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(actuatorBasePath + "/metrics").hasRole("ACTUATOR")
-                .antMatchers("/api/**").hasRole("USER") // Example: Securing '/api/**' endpoints
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+            .antMatchers(actuatorBasePath + "/metrics").hasRole("ACTUATOR")
+            .antMatchers("/api/**").hasRole("USER") // Example: Securing '/api/**' endpoints
+            .anyRequest().authenticated()
+            .and()
+            .httpBasic();
     }
 
     /**
@@ -54,14 +57,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser(metricsUsername)
-                .password("{noop}" + metricsPassword)
-                .roles("ACTUATOR")
-                .and()
-                .withUser(travelUser)
-                .password("{noop}" + travelPassword)
-                .roles("USER");
+            .withUser(metricsUsername)
+            .password("{noop}" + metricsPassword)
+            .roles("ACTUATOR")
+            .and()
+            .withUser(travelUser)
+            .password("{noop}" + travelPassword)
+            .roles("USER");
     }
-
-
 }
